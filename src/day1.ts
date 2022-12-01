@@ -2262,4 +2262,28 @@ const getHigherCaloriesCarryingElf = (input: string = defaultInput) => {
   return calMax;
 };
 
-export default {getHigherCaloriesCarryingElf};
+const getTop3Cal = (input: string = defaultInput) => {
+  const elvesLines = input.split('\n\n').map((line) => line.split('\n'));
+  let calMax1 = 0;
+  let calMax2 = 0;
+  let calMax3 = 0;
+  for (const elfLine of elvesLines) {
+    const elfTotalCal = elfLine.reduce((acc, curr) => {
+      return acc + parseInt(curr);
+    }, 0);
+    if (elfTotalCal > calMax1) {
+      calMax3 = calMax2;
+      calMax2 = calMax1;
+      calMax1 = elfTotalCal;
+    } else if (elfTotalCal > calMax2) {
+      calMax3 = calMax2;
+      calMax2 = elfTotalCal;
+    } else if (elfTotalCal > calMax3) {
+      calMax3 = elfTotalCal;
+    }
+    console.log(calMax1, calMax2, calMax3);
+  }
+  return calMax1 + calMax2 + calMax3;
+};
+
+export default {getHigherCaloriesCarryingElf, getTop3Cal};

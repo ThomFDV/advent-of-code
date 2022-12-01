@@ -2251,39 +2251,15 @@ const defaultInput = `7914
 
 const getHigherCaloriesCarryingElf = (input: string = defaultInput) => {
   const elvesLines = input.split('\n\n').map((line) => line.split('\n'));
-  let calMax = 0;
-  for (const elfLine of elvesLines) {
-    const elfTotalCal = elfLine.reduce((acc, curr) => {
-      return acc + parseInt(curr);
-    }, 0);
-    if (elfTotalCal > calMax) calMax = elfTotalCal;
-    console.log(calMax);
-  }
-  return calMax;
+  const elvesTotalCal = elvesLines.map((elfLine) => elfLine.reduce((acc, curr) => acc + parseInt(curr), 0));
+  return elvesTotalCal.reduce((acc, curr) => curr > acc ? curr : acc, 0);
 };
 
 const getTop3Cal = (input: string = defaultInput) => {
   const elvesLines = input.split('\n\n').map((line) => line.split('\n'));
-  let calMax1 = 0;
-  let calMax2 = 0;
-  let calMax3 = 0;
-  for (const elfLine of elvesLines) {
-    const elfTotalCal = elfLine.reduce((acc, curr) => {
-      return acc + parseInt(curr);
-    }, 0);
-    if (elfTotalCal > calMax1) {
-      calMax3 = calMax2;
-      calMax2 = calMax1;
-      calMax1 = elfTotalCal;
-    } else if (elfTotalCal > calMax2) {
-      calMax3 = calMax2;
-      calMax2 = elfTotalCal;
-    } else if (elfTotalCal > calMax3) {
-      calMax3 = elfTotalCal;
-    }
-    console.log(calMax1, calMax2, calMax3);
-  }
-  return calMax1 + calMax2 + calMax3;
+  const elvesTotalCal = elvesLines.map((elfLine) => elfLine.reduce((acc, curr) => acc + parseInt(curr), 0));
+  const sortedElvesTotalCal = elvesTotalCal.sort((a, b) => b-a);
+  return sortedElvesTotalCal.slice(0, 3).reduce((acc, curr) => acc + curr, 0);
 };
 
 export default {getHigherCaloriesCarryingElf, getTop3Cal};

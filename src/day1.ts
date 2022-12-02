@@ -2251,15 +2251,15 @@ const defaultInput = `7914
 
 const getHigherCaloriesCarryingElf = (input: string = defaultInput) => {
   const elvesLines = input.split('\n\n').map((line) => line.split('\n'));
-  let calMax = 0;
-  for (const elfLine of elvesLines) {
-    const elfTotalCal = elfLine.reduce((acc, curr) => {
-      return acc + parseInt(curr);
-    }, 0);
-    if (elfTotalCal > calMax) calMax = elfTotalCal;
-    console.log(calMax);
-  }
-  return calMax;
+  const elvesTotalCal = elvesLines.map((elfLine) => elfLine.reduce((acc, curr) => acc + parseInt(curr), 0));
+  return elvesTotalCal.reduce((acc, curr) => curr > acc ? curr : acc, 0);
 };
 
-export default {getHigherCaloriesCarryingElf};
+const getTop3Cal = (input: string = defaultInput) => {
+  const elvesLines = input.split('\n\n').map((line) => line.split('\n'));
+  const elvesTotalCal = elvesLines.map((elfLine) => elfLine.reduce((acc, curr) => acc + parseInt(curr), 0));
+  const sortedElvesTotalCal = elvesTotalCal.sort((a, b) => b-a);
+  return sortedElvesTotalCal.slice(0, 3).reduce((acc, curr) => acc + curr, 0);
+};
+
+export default {getHigherCaloriesCarryingElf, getTop3Cal};

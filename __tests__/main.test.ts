@@ -18,4 +18,22 @@ describe('day1 challenge tests', () => {
       10000`;
     expect(day1.getHigherCaloriesCarryingElf(input)).toBe(24000);
   });
+
+  it('should get 24000', () => {
+    const input = `1000
+      2000
+      3000
+
+      4000
+
+      5000
+      6000
+
+      7000
+      8000
+      9000
+
+      10000`;
+    expect(day1.getTop3Cal(input)).toBe(45000);
+  });
 });

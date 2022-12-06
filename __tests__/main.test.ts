@@ -1,5 +1,6 @@
 import day1 from '../src/day1.js';
 import day2 from '../src/day2.js';
+import day4 from '../src/day4.js';
 
 describe('day1 challenge tests', () => {
   it('should get 24000', () => {
@@ -50,5 +51,25 @@ describe('day1 challenge tests', () => {
     B X
     C Z`;
     expect(day2.getRockPaperScissorsScore2(input)).toBe(12);
+  });
+
+  it('should get 2', () => {
+    const input = `2-4,6-8
+2-3,4-5
+5-7,7-9
+2-8,3-7
+6-6,4-6
+2-6,4-8`;
+    expect(day4.getAssigmentPairsCount(input)).toBe(2);
+  });
+
+  it('should get 4', () => {
+    const input = `2-4,6-8
+2-3,4-5
+5-7,7-9
+2-8,3-7
+6-6,4-6
+2-6,4-8`;
+    expect(day4.getAssigmentPairsCount2(input)).toBe(4);
   });
 });

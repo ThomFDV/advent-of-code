@@ -1,7 +1,8 @@
 import day1 from '../src/day1.js';
 import day2 from '../src/day2.js';
+import day3 from '../src/day3.js';
 
-describe('day1 challenge tests', () => {
+describe('days challenges tests', () => {
   it('should get 24000', () => {
     const input = `1000
       2000
@@ -50,5 +51,15 @@ describe('day1 challenge tests', () => {
     B X
     C Z`;
     expect(day2.getRockPaperScissorsScore2(input)).toBe(12);
+  });
+
+  it('should get 157', () => {
+    const input = `vJrwpWtwJgWrhcsFMMfFFhFp
+jqHRNqRjqzjGDLGLrsFMfFZSrLrFZsSL
+PmmdzqPrVvPwwTWBwg
+wMqvLMZHhHMvwLHjbvcjnnSBnvTQFn
+ttgJtRGJQctTZtZT
+CrZsJsPPZsGzwwsLwLmpwMDw`;
+    expect(day3.getItemPrioritiesSum(input)).toBe(157);
   });
 });

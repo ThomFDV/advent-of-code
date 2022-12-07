@@ -15,7 +15,7 @@ console.log('solution for day2: ', day2_solution);
 console.log('solution for day2_gold: ', day2_gold_solution);
 
 const day5_solution = day5.getTopStacks();
-// const day5_gold_solution = ;
+const day5_gold_solution = day5.getOrderedTopStacks();
 
 console.log('solution for day5: ', day5_solution);
-// console.log('solution for day5_gold: ', day5_gold_solution);
+console.log('solution for day5_gold: ', day5_gold_solution);
